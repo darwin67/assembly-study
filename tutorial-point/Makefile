@@ -31,3 +31,10 @@ addressing: addressing.o
 
 addressing.o: addressing.asm
 	nasm -f elf addressing.asm
+
+
+variables: variables.o
+	ld -m elf_i386 -s -o variables.out variables.o
+
+variables.o: variables.asm
+	nasm -f elf variables.asm
