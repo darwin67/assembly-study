@@ -24,3 +24,10 @@ syscall: syscall.o
 
 syscall.o:
 	nasm -f elf syscall.asm
+
+
+addressing: addressing.o
+	ld -m elf_i386 -s -o addressing.out addressing.o
+
+addressing.o: addressing.asm
+	nasm -f elf addressing.asm
