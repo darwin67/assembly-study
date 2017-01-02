@@ -1,0 +1,30 @@
+* Constants
+
+** EQU
+   The *EQU* directive is used for defining constants.
+
+   #+NAME: equ
+   #+BEGIN_SRC asm
+     SYS_WRITE equ 4                 ; set constant SYS_WRITE to 4
+     STDOUT    equ 1                 ; set constant STDOUT to 1
+   #+END_SRC
+
+** %assign
+   The *%assign* directive can be used to define numeric constants like the EQU directive.
+   This directive allows redefinition.
+
+   #+NAME: %assign
+   #+BEGIN_SRC asm
+     %assign TOTAL 10                ; assign TOTAL to 10
+
+     %assign TOTAL  20               ; reassign TOTAL to 20
+   #+END_SRC
+
+** %define
+   The %define directive allows defining both numeric and string constants.
+   This directive is similar to the #define in C.
+
+   #+NAME: %define
+   #+BEGIN_SRC asm
+     %define PTR [EBP+4]             ; replaces PTR by [EBP+4]
+   #+END_SRC

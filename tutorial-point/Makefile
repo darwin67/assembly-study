@@ -38,3 +38,10 @@ variables: variables.o
 
 variables.o: variables.asm
 	nasm -f elf variables.asm
+
+
+constants: constants.o
+	ld -m elf_i386 -s -o constants.out constants.o
+
+constants.o: constants.asm
+	nasm -f elf constants.asm
