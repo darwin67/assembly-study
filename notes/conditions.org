@@ -1,0 +1,108 @@
+#+STARTUP: showall
+
+* Conditions
+
+** CMP
+   The CMP instruction compares two operands. It is generally used in conditional execution.
+   This instruction basically subtracts one operand from the other for comparing whether the
+   operands are equal or not. It does not disturb the destination or source operands. It is
+   used along with the conditional jump instruction for decision making.
+
+   #+NAME: CMP
+   #+BEGIN_SRC asm
+     CMP DX, 00                      ; Compare the DX value with zero
+     JE  L7                          ; If yes, then jump to label L7
+
+     ...
+
+     L7:
+   #+END_SRC
+
+   CMP is often used for comparing whether a counter value has reached the number of times a
+   loop needs to be run.
+
+   #+NAME: CMP
+   #+BEGIN_SRC asm
+     INC EDX
+     CMP EDX, 10      ; Compares whether the counter has reached 10
+     JLE LP1          ; If it is less than or equal to 10, then jump to LP1
+   #+END_SRC
+
+
+** Unconditional Jump (JMP)
+   This is performed by the JMP instruction. Conditional execution often involves a transfer of
+   control to the address of an instruction that does not follow the currently executing instruction.
+   Transfer of control may be forward, to execute a new set of instructions or backward, to
+   re-execute the same steps.
+
+   #+NAME: JMP
+   #+BEGIN_SRC asm
+         MOV  AX, 00                 ; Initializing AX to 0
+         MOV  BX, 00                 ; Initializing BX to 0
+         MOV  CX, 01                 ; Initializing CX to 1
+
+     L20:
+         ADD  AX, 01     ; Increment AX
+         ADD  BX, AX     ; Add AX to BX
+         SHL  CX, 1      ; shift left CX, this in turn doubles the CX value
+         JMP  L20        ; repeats the statements
+   #+END_SRC
+
+
+** Conditional Jump
+   If some specified condition is satisfied in conditional jump, the control flow is transferred
+   to a target instruction. There are numerous conditional jump instructions depending upon the
+   condition and data.
+
+   Following are the conditional jump instructions used on signed data used for arithmetic operations.
+   |-------------+-------------------------------------+--------------|
+   | Instruction | Description                         | Flags tested |
+   |-------------+-------------------------------------+--------------|
+   | JE / JZ     | Jump Equal or Jump Zero             | ZF           |
+   | JNE / JNZ   | Jump Not Equal or Jump Not Zero     | ZF           |
+   | JG / JNLE   | Jump Greater or Jump Not Less/Equal | OF, SF, ZF   |
+   | JGE / JNL   | Jump Greater/Equal or Jump Not Less | OF, SF       |
+   | JL / JNGE   | Jump Less or Jump Not Greater/Equal | OF, SF       |
+   | JLE / JNG   | Jump Less Equal or Jump Not Greater | OF, SF, ZF   |
+   |-------------+-------------------------------------+--------------|
+
+   Following are the conditional jump instructions used on unsigned data used for logical operations.
+   |-------------+------------------------------------+--------------|
+   | Instruction | Description                        | Flags tested |
+   |-------------+------------------------------------+--------------|
+   | JE / JZ     | Jump Equal or Jump Zero            | ZF           |
+   | JNE / JNZ   | Jump Not Equal or Jump Not Zero    | ZF           |
+   | JA / JNBE   | Jump Above or Jump Not Below/Equal | CF, ZF       |
+   | JAE / JNB   | Jump Above/Equal or Jump Not Below | CF           |
+   | JB / JNAE   | Jump Below or Jump Not Above/Equal | CF           |
+   | JBE / JNA   | Jump Below/Equal or Jump Not Above | AF, CF       |
+   |-------------+------------------------------------+--------------|
+
+   The following conditional jump instructions have special uses and check the value of flags.
+   |-------------+-----------------------------------+--------------|
+   | Instruction | Description                       | Flags tested |
+   |-------------+-----------------------------------+--------------|
+   | JXCZ        | Jump if CX is Zero                | none         |
+   | JC          | Jump if Carry                     | CF           |
+   | JNC         | Jump if No Carry                  | CF           |
+   | JO          | Jump if Overflow                  | CF           |
+   | JNO         | Jump if no Overflow               | CF           |
+   | JP / JPE    | Jump Parity or Jump Parity Even   | PF           |
+   | JNP / JNPE  | Jump No Parity or Jump Parity Odd | PF           |
+   | JS          | Jump Sign (negative value)        | SF           |
+   | JNS         | Jump No Sign (positive value)     | SF           |
+   |-------------+-----------------------------------+--------------|
+
+   The syntax for the J<condition> set of instructions:
+   #+NAME: OR
+   #+BEGIN_SRC asm
+        CMP AL, BL
+        JE  EQUAL
+        CMP AL, BH
+        JE  EQUAL
+        CMP AL, CL
+        JE  EQUAL
+
+     NON_EQUAL: ...
+     EQUAL: ...
+   #+END_SRC

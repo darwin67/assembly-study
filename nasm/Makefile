@@ -36,3 +36,7 @@ arithmetric: arithmetric.asm
 logical: logical.asm
 	nasm -f elf logical.asm
 	ld -m elf_i386 -s -o logical.out logical.o
+
+conditions: conditions.asm
+	nasm -f elf conditions.asm
+	ld -m elf_i386 -s -o conditions.out conditions.o
