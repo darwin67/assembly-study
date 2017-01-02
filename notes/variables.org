@@ -1,3 +1,5 @@
+#+STARTUP: showall
+
 * Variables
 
 ** Allocating Storage Space for Initialized Data

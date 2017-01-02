@@ -1,3 +1,5 @@
+#+STARTUP: showall
+
 * Arithmetic Instructions
 
 ** INC
