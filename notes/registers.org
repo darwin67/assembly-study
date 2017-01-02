@@ -3,12 +3,14 @@
 * General registers
 ** Data Registers (used for arithmetic, logical, and other operations)
 
+   |-----+----+----+----+----------------------|
    | 32  | 16 | 8  | 8  | Name                 |
    |-----+----+----+----+----------------------|
    | EAX | AX | AH | AL | Accumulator register |
    | EBX | BX | BH | BL | Base register        |
    | ECX | CX | CH | CL | Counter register     |
    | EDX | DX | DH | DL | Data register        |
+   |-----+----+----+----+----------------------|
 
    - As complete 32-bit data registers: EAX, EBX, ECX, EDX.
      + EAX
@@ -37,10 +39,12 @@
 
 ** Pointer Registers
 
+   |-----+----+---------------|
    | 32  | 16 | Name          |
    |-----+----+---------------|
    | ESP | SP | Stack Pointer |
    | EBP | BP | Base Pointer  |
+   |-----+----+---------------|
 
    - EIP, IP (Instruction Pointer)
      The 16-bit IP register stores the offset address of the next instruction to be
@@ -59,10 +63,12 @@
 
 ** Index Registers
 
+   |-----+----+-------------------|
    | 32  | 16 | Name              |
    |-----+----+-------------------|
    | ESI | SI | Source Index      |
    | EDI | DI | Destination Index |
+   |-----+----+-------------------|
 
    - ESI, SI (Source Index)
      It is used as source index for string operations.sss
@@ -77,9 +83,11 @@
   of the flags and some other conditional instructions test the value of these status flags
   to take the control flow to other location.
 
+  |---------+----+----+----+----+----+----+---+---+---+---+---+---+---+---+---+---|
   | Flag    |    |    |    |    |  O |  D | I | T | S | Z |   | A |   | P |   | C |
   |---------+----+----+----+----+----+----+---+---+---+---+---+---+---+---+---+---|
   | Bit no. | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+  |---------+----+----+----+----+----+----+---+---+---+---+---+---+---+---+---+---|
 
    - OF (Overflow Flag)
      It indicates the overflow of a high-order bit (leftmost bit) of data after a signed

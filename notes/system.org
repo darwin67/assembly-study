@@ -2,6 +2,7 @@
 
 * System calls (http://asm.sourceforge.net/syscall.html)
 
+  |-------------+-----------+-----------------+-------------+--------+------+------|
   | System call | Name      | File descriptor | Value       | Length |      |      |
   |        %eax |           | %ebx            | %ecx        | %edx   | %esx | %edi |
   |-------------+-----------+-----------------+-------------+--------+------+------|
@@ -11,5 +12,6 @@
   |           4 | sys_write | unsigned int    | const char* | size_t | -    | -    |
   |           5 | sys_open  | const char*     | int         | int    | -    | -    |
   |           6 | sys_close | unsigned int    | -           | -      | -    | -    |
+  |-------------+-----------+-----------------+-------------+--------+------+------|
 
   etc.

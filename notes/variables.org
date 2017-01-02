@@ -2,6 +2,7 @@
 
 ** Allocating Storage Space for Initialized Data
 
+  |-----------+-------------------+--------------------|
   | Directive | Purpose           | Storage Space      |
   |-----------+-------------------+--------------------|
   | DB        | Define Byte       | allocates 1 byte   |
@@ -9,6 +10,7 @@
   | DD        | Define DoubleWord | allocates 4 bytes  |
   | DQ        | Define QuadWord   | allocates 8 bytes  |
   | DT        | Define Ten Bytes  | allocates 10 bytes |
+  |-----------+-------------------+--------------------|
 
   *Notes*
   - Each byte of character is stored as its ASCII value in hexadecimal.
@@ -35,6 +37,7 @@
    The reserve directives take a single operand that specifies the number of units of
    space to be reserved. Each define directive has a related reserve directive.
 
+   |-----------+----------------------|
    | Directive | Purpose              |
    |-----------+----------------------|
    | RESB      | Reserve a Byte       |
@@ -42,3 +45,4 @@
    | RESD      | Reserve a DoubleWord |
    | RESQ      | Reseve a QuadWord    |
    | REST      | Reserve Ten Bytes    |
+   |-----------+----------------------|
