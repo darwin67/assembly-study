@@ -1,0 +1,28 @@
+#+STARTUP: showall
+
+* Loops
+** JMP
+   The JMP instruction can be used for implementing loops.
+   For example, the following code snippet can be used for executing the loop-body 10 times.
+
+   #+NAME: LOOP
+   #+BEGIN_SRC asm
+         mov cl, 10
+     l1:
+         ;; loop body
+         dec cl
+         jnz l1                      ; repeat l1 if cl != 0
+   #+END_SRC
+
+** LOOP
+   The *LOOP* instruction assumes that the *ECX register contains the loop count*. When the
+   loop instruction is executed, the ECX register is decremented and the control jumps to the
+   target label, until the ECX register value, i.e., the counter reaches the value zero.
+
+   #+NAME: LOOP
+   #+BEGIN_SRC asm
+         mov exc, 10
+     l1:
+         ;; loop body
+         loop l1
+   #+END_SRC

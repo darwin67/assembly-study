@@ -40,3 +40,7 @@ logical: logical.asm
 conditions: conditions.asm
 	nasm -f elf conditions.asm
 	ld -m elf_i386 -s -o conditions.out conditions.o
+
+loops: loops.asm
+	nasm -f elf loops.asm
+	ld -m elf_i386 -s -o loops.out loops.o
