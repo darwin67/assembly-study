@@ -68,3 +68,7 @@ recursion: recursion.asm
 macro: macro.asm
 	nasm -f elf macro.asm
 	ld -m elf_i386 -s -o macro.out macro.o
+
+file: file.asm
+	nasm -f elf file.asm
+	ld -m elf_i386 -s -o file.out file.o
