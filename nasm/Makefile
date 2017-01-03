@@ -64,3 +64,7 @@ stack: stack.asm
 recursion: recursion.asm
 	nasm -f elf recursion.asm
 	ld -m elf_i386 -s -o recursion.out recursion.o
+
+macro: macro.asm
+	nasm -f elf macro.asm
+	ld -m elf_i386 -s -o macro.out macro.o

@@ -1,0 +1,18 @@
+#+STARTUP: showall
+
+* Macro
+  - A macro is a sequence of instructions, assigned by a name and could be used anywhere in the program.
+  - The macro begins with the *%macro* directive and ends with the *%endmacro* directives.
+
+  #+NAME: Macro
+   #+BEGIN_SRC asm
+      %macro macro_name  number_of_params
+      <macro body>
+      %endmacro
+   #+END_SRC
+
+   Where, *number_of_params* specifies the number parameters, *macro_name* specifies the name of the macro.
+
+   The macro is invoked by using the macro name along with the necessary parameters. When you need to use
+   some sequence of instructions many times in a program, you can put those instructions in a macro and use
+   it instead of writing the instructions all the time.
