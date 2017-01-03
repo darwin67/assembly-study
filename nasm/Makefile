@@ -44,3 +44,7 @@ conditions: conditions.asm
 loops: loops.asm
 	nasm -f elf loops.asm
 	ld -m elf_i386 -s -o loops.out loops.o
+
+numbers: numbers.asm
+	nasm -f elf numbers.asm
+	ld -m elf_i386 -s -o numbers.out numbers.o

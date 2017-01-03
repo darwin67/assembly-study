@@ -71,7 +71,7 @@
    |-----+----+-------------------|
 
    - ESI, SI (Source Index)
-     It is used as source index for string operations.sss
+     It is used as source index for string operations.
    - EDI, DI (Destination Index)
      It is used as destination index for string operations.
 

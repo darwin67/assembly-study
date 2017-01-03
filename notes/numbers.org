@@ -1,0 +1,98 @@
+#+STARTUP: showall
+
+* Numbers
+  Numerical data is generally represented in binary system. Arithmetic instructions operate on
+  binary data. When numbers are displayed on screen or entered from keyboard, they are in ASCII
+  form.
+
+** ASCII Representation
+   In ASCII representation, decimal numbers are stored as string of ASCII characters.
+   For example, the decimal value 1234 is stored as
+
+   #+NAME: ASCII
+   #+BEGIN_SRC txt
+     31 32 33 34H
+   #+END_SRC
+
+   Where, 31H is ASCII value for 1, 32H is ASCII value for 2, and so on.
+
+   There are four instructions for processing numbers in ASCII representation,
+   - *AAA* - ASCII Adjust After Addition
+   - *AAS* - ASCII Adjust After Subtraction
+   - *AAM* - ASCII Adjust After Multipication
+   - *AAD* - ASCII Adjust After Division
+
+   These instructions do not take any operands and assume the required operand to be in the *AL*
+   register.
+
+   #+NAME: ASCII
+   #+BEGIN_SRC asm
+     section.text
+        global _start                ; must be declared for using gcc
+
+     _start:
+        sub ah, ah
+        mov al, '9'
+        sub al, '3'
+        aas
+        or  al, 30h
+        mov [res], ax
+
+        mov edx, len                 ; message length
+        mov ecx, msg                 ; message to write
+        mov ebx, 1                   ; file descriptor (stdout)
+        mov eax, 4                   ; system call number (sys_write)
+        int 0x80                     ; call kernel
+
+        mov edx, 1                   ; message length
+        mov ecx, res                 ; message to write
+        mov ebx, 1                   ; file descriptor (stdout)
+        mov eax, 4                   ; system call number (sys_write)
+        int 0x80                     ; call kernel
+
+        moveax, 1                    ; system call number (sys_exit)
+        int 0x80                     ; call kernel
+
+     section.data
+        msg db 'The Result is:',0xa
+        len equ $ - msg
+
+     section .bss
+        res resb 1
+
+      ;; => The Result is:
+      ;;    6
+   #+END_SRC
+
+** BCD Representation
+*** Unpacked BCD representation
+   In unpacked BCD representation, each byte stores the binary equivalent of a decimal digit.
+   For example, the number 1234 is stored as,
+
+   #+NAME: BCD
+   #+BEGIN_SRC txt
+   01 02 03 04H
+   #+END_SRC
+
+   There are two instructions for processing these numbers,
+   - *AAM* - ASCII Adjust After Multiplication
+   - *AAD* - ASCII Adjust After Division
+
+   The four ASCII adjust instructions, AAA, AAS, AAM, and AAD, can also be used with unpacked
+   BCD representation.
+
+*** Packed BCD representation
+    In packed BCD representation, each digit is stored using four bits. Two decimal digits are
+    packed into a byte.
+    For example, the number 1234 is stored as,
+
+    #+NAME: BCD
+   #+BEGIN_SRC txt
+    12 34H
+   #+END_SRC
+
+   There are two instructions for processing these numbers,
+   - *DAA* - Decimal Adjust After Addition
+   - *DAS* - Decimal Adjust After Subtraction
+
+   There is no support for multiplication and division in packed BCD representation.
