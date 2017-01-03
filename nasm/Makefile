@@ -60,3 +60,7 @@ procedure: procedure.asm
 stack: stack.asm
 	nasm -f elf stack.asm
 	ld -m elf_i386 -s -o stack.out stack.o
+
+recursion: recursion.asm
+	nasm -f elf recursion.asm
+	ld -m elf_i386 -s -o recursion.out recursion.o
