@@ -72,3 +72,7 @@ macro: macro.asm
 file: file.asm
 	nasm -f elf file.asm
 	ld -m elf_i386 -s -o file.out file.o
+
+memory: memory.asm
+	nasm -f elf memory.asm
+	ld -m elf_i386 -s -o memory.out memory.o
