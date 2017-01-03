@@ -1,0 +1,9 @@
+#+STARTUP: showall
+
+* Array
+  #+NAME: Array
+   #+BEGIN_SRC asm
+    numbers dw 34, 45, 56, 67, 75, 89 ; Define a one-dimensional array of numbers
+
+    numbers times 6 dw 0            ; Initialize an array named numbers with six 0s
+   #+END_SRC

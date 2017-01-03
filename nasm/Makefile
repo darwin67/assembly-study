@@ -48,3 +48,7 @@ loops: loops.asm
 numbers: numbers.asm
 	nasm -f elf numbers.asm
 	ld -m elf_i386 -s -o numbers.out numbers.o
+
+array: array.asm
+	nasm -f elf array.asm
+	ld -m elf_i386 -s -o array.out array.o
