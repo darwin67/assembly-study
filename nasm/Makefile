@@ -52,3 +52,11 @@ numbers: numbers.asm
 array: array.asm
 	nasm -f elf array.asm
 	ld -m elf_i386 -s -o array.out array.o
+
+procedure: procedure.asm
+	nasm -f elf procedure.asm
+	ld -m elf_i386 -s -o procedure.out procedure.o
+
+stack: stack.asm
+	nasm -f elf stack.asm
+	ld -m elf_i386 -s -o stack.out stack.o
