@@ -5,7 +5,7 @@ toupper.o: toupper.asm
 	nasm -f elf toupper.asm
 
 test:
-	./toupper.out < toupper.asm > upper.txt
+	./toupper.out < toupper.asm > test.txt
 
 clean:
 	rm -f *.out *.txt *.o
