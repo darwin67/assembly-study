@@ -1,4 +1,5 @@
 ;;; Convert any uppercase characters in a file to lowercase
+;;; Read in a char from stdin one at a time and process them
         SYS_EXIT  equ 1
         SYS_WRITE equ 4
         SYS_READ  equ 3
